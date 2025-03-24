@@ -1,7 +1,7 @@
 public class Giocatore
 {
 	/* Nome? */
-	static final private int CFU_INIZIALI = 2;
+	static final private int CFU_INIZIALI = 20;
 	private int cfu=CFU_INIZIALI;
 
 	public int getCfu() {
