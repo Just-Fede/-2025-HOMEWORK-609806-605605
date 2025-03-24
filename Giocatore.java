@@ -1,3 +1,11 @@
+
+/**
+ * Questa classe gestisce la creazione del personaggio principale
+ *
+ * @author  Federico Cerilli
+ * @see Partita
+ * @version base
+ */
 public class Giocatore
 {
 	/* Nome? */
