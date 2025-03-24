@@ -13,7 +13,7 @@
 public class Partita {
 	
 	private Labirinto labirinto = new Labirinto();
-	private Giocatore Player = new Giocatore();
+	private Giocatore player = new Giocatore();
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	int CFU;
@@ -21,7 +21,7 @@ public class Partita {
 	public Partita(){
 		labirinto.creaStanze();
 		this.finita = false;
-		this.CFU = Player.getCFUIniziali;
+		this.CFU =player.getCFUIniziali;
 		stanzaCorrente=labirinto.getStanzaIniziale();
 	}
 
