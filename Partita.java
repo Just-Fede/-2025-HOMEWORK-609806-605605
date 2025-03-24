@@ -48,7 +48,7 @@ public class Partita {
 	}
 	/**
 	 * Restituisce vero se e solo se la partita e' stata persa
-	 * @return vero se partita vinta
+	 * @return vero se partita persa
 	 */
 	
 	public boolean persa() {
