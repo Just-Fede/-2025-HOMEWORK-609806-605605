@@ -13,13 +13,13 @@
 public class Partita {
 	
 	private Labirinto labirinto = new Labirinto();
+	private Giocatore Player = new Giocatore();
 	private Stanza stanzaCorrente;
 	private boolean finita;
 	int CFU;
 	
 	public Partita(){
 		labirinto.creaStanze();
-		Giocatore Player = new Giocatore();
 		this.finita = false;
 		this.CFU = Player.getCFUIniziali;
 		stanzaCorrente=labirinto.getStanzaIniziale();
