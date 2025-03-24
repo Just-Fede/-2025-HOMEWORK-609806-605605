@@ -46,7 +46,10 @@ public class Partita {
 	public boolean isFinita() {
 		return finita || vinta() || persa();
 	}
-	
+	/**
+	 * Restituisce vero se e solo se la partita e' stata persa
+	 * @return vero se partita vinta
+	 */
 	
 	public boolean persa() {
 		return (player.getCfu() == 0);
