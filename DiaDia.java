@@ -94,8 +94,8 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.getCfu();
-			this.partita.setCfu(cfu--);
+			int cfu = this.partita.player.getCFU();
+			this.partita.player.setCFU(cfu-1);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
 	}
