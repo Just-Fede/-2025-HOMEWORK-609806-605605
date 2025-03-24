@@ -1,4 +1,4 @@
-publi class Giocatore
+public class Giocatore
 {
   /* Nome? */
   static final private int CFU_INIZIALI = 20;
@@ -10,4 +10,8 @@ publi class Giocatore
 
 	public void setCfu(int cfu) {
 		this.cfu = cfu;		
+	}
+	public void getCFUIniziali()
+	{
+		return this.CFU_INIZIALI;
 	}
