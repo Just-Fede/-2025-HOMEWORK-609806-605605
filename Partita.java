@@ -16,7 +16,6 @@ public class Partita {
 	
 	private Labirinto labirinto= new Labirinto();
 	private Stanza stanzaCorrente;
-	private Stanza stanzaVincente;
 	private boolean finita;
 	private int cfu;
 	
@@ -25,7 +24,6 @@ public class Partita {
 		this.finita = false;
 		this.cfu = CFU_INIZIALI;
 		stanzaCorrente=labirinto.getStanzaIniziale();
-		stanzaVincente=labirinto.getStanzaVincente();
 	}
 
 
@@ -43,7 +41,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== this.getStanzaVincente();
+		return this.getStanzaCorrente()== labirinto.getStanzaVincente();
 	}
 
 	/**
