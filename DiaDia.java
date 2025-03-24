@@ -25,7 +25,7 @@ public class DiaDia {
 			"puoi raccoglierli, usarli, posarli quando ti sembrano inutili\n" +
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
-	
+
 	static final private String[] elencoComandi = {"vai", "aiuto", "fine"};
 
 	private Partita partita;
@@ -66,7 +66,12 @@ public class DiaDia {
 		if (this.partita.vinta()) {
 			System.out.println("Hai vinto!");
 			return true;
-		} else
+		} 
+		else if(partita.persa()) {
+			System.out.println("Hai perso!");
+			return true;
+		}
+		else
 			return false;
 	}   
 
@@ -94,11 +99,16 @@ public class DiaDia {
 			System.out.println("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
-			int cfu = this.partita.player.getCFU();
-			this.partita.player.setCFU(cfu-1);
+			int cfu = this.partita.player.getCfu();
+			this.partita.player.setCfu(cfu-1);
 		}
 		System.out.println(partita.getStanzaCorrente().getDescrizione());
+		System.out.println("CFU: "+partita.player.getCfu());
+		if (partita.isFinita() == true) {
+			partita.setFinita();
+		}
 	}
+
 
 	/**
 	 * Comando "Fine".
