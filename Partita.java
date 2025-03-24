@@ -29,9 +29,6 @@ public class Partita {
 	}
 
 
-	public Stanza getStanzaVincente() {
-		return stanzaVincente;
-	}
 
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
