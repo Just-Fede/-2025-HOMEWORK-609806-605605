@@ -57,16 +57,7 @@ public class Labirinto {
 	public Stanza getStanzaVincente() {
 		return this.stanzaVincente;
 	}
-	/*
-	public void setStanzaCorrente(Stanza stanzaCorrente) {
-		this.stanzaCorrente = stanzaCorrente;
-	}
 
-	public Stanza getStanzaCorrente() {
-		return this.stanzaCorrente;
-
-	}*/
-	
 	
 	public Stanza getStanzaIniziale() {
 		return this.stanzaIniziale;
