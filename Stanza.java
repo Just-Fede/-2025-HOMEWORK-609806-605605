@@ -173,10 +173,10 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzoDaEliminare) {
-		for (Attrezzo attrezzo : this.attrezzi) 
+		for (int i=0;i<attrezzi.length;i++) 
 		{
-			if (attrezzo.getNome().equals(attrezzoDaEliminare))
-				attrezzo = null;
+			if (attrezzi[i]==attrezzoDaEliminare)
+				attrezzi[i] = null;
 			return true;
 		}
 		return false;	
