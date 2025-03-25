@@ -11,6 +11,7 @@ public class Giocatore
 	/* Nome? */
 	static final private int CFU_INIZIALI = 20;
 	private int cfu=CFU_INIZIALI;
+	private Borsa inventario = new Borsa(10); 
 
 	public int getCfu() {
 		return this.cfu;
@@ -22,6 +23,22 @@ public class Giocatore
 	public int getCFUIniziali()
 	{
 		return this.CFU_INIZIALI;
+	}
+	
+	public Borsa getInventario()
+	{
+		return this.inventario;
+	}
+
+	public boolean aggiungiAllaBorsa(Attrezzo attrezzo)
+	{
+		if( (inventario.getPeso() + attrezzo.getPeso() <= inventario.getPesoMax()) && (inventario.getNumeroAttrezzi() <= inventario.getGrandezza()))
+		{
+			inventario.addAttrezzo(attrezzo);
+			return true;
+		}
+		else
+			return false;
 	}
 
 }

@@ -119,11 +119,17 @@ public class DiaDia {
 			return;
 		}
 		else if (partita.getStanzaCorrente().hasAttrezzo(nome)) {
+			if(partita.player.aggiungiAllaBorsa(partita.getStanzaCorrente().getAttrezzo(nome)))
+				System.out.print("Oggetto aggiunto all'inventario e ... ");
+
 			if(partita.getStanzaCorrente().removeAttrezzo(partita.getStanzaCorrente().getAttrezzo(nome))) 
-				System.out.println("Oggetto raccolto");
+				System.out.println("Ora non è più per terra!\n" + partita.player.getInventario().toString());
+
 			else 
 				System.out.println("Oggetto non trovato");
 		}
+		else 
+			System.out.println("Questo attrezzo non è quì presente...");
 
 	}
 
