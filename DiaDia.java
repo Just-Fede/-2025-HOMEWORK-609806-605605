@@ -59,14 +59,13 @@ public class DiaDia {
 			return true;
 		} else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
-		
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
-		else if (comandoDaEseguire.getNome().equals("prendi")) {
-			
-		}
-		else if (comandoDaEseguire.getNome().equals("posa")) 
-			this.prendi(comandoDaEseguire.getParametro();)
+		else if (comandoDaEseguire.getNome().equals("prendi")) 
+			this.prendi(comandoDaEseguire.getParametro());
+		else if (comandoDaEseguire.getNome().equals("posa")) {
+
+		}	
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -114,11 +113,18 @@ public class DiaDia {
 			partita.setFinita();
 		}
 	}
+	private void prendi(String nome) {
+		if (nome==null) {
+			System.out.println("Cosa vuoi raccogliere?");
+			return;
+		}
+		else if (partita.getStanzaCorrente().hasAttrezzo(nome)) {
+			if(partita.getStanzaCorrente().removeAttrezzo(partita.getStanzaCorrente().getAttrezzo(nome))) 
+				System.out.println("Oggetto raccolto");
+			else 
+				System.out.println("Oggetto non trovato");
+		}
 
-	private void prendi(String parametro)
-	{
-		if(parametro==null)
-			System.out.println("Cosa vuoi raccoglire? ");
 	}
 
 	/**
