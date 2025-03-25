@@ -59,14 +59,14 @@ public class DiaDia {
 			return true;
 		} else if (comandoDaEseguire.getNome().equals("vai"))
 			this.vai(comandoDaEseguire.getParametro());
+		
 		else if (comandoDaEseguire.getNome().equals("aiuto"))
 			this.aiuto();
 		else if (comandoDaEseguire.getNome().equals("prendi")) {
 			
 		}
-		else if (comandoDaEseguire.getNome().equals("posa")) {
-			
-		}	
+		else if (comandoDaEseguire.getNome().equals("posa")) 
+			this.prendi(comandoDaEseguire.getParametro();)
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -115,6 +115,11 @@ public class DiaDia {
 		}
 	}
 
+	private void prendi(String parametro)
+	{
+		if(parametro==null)
+			System.out.println("Cosa vuoi raccoglire? ");
+	}
 
 	/**
 	 * Comando "Fine".
