@@ -23,6 +23,9 @@ public class Partita {
 		stanzaCorrente=labirinto.getStanzaIniziale();
 	}
 
+	public Labirinto getLabirinto()
+	{return this.labirinto;}
+	
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
