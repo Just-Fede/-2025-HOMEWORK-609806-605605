@@ -113,6 +113,15 @@ public class DiaDia {
 			partita.setFinita();
 		}
 	}
+
+	/**
+	 * Cerca di raccogliere un attrezzo presente nella stanza corrente.
+	 * se l'attrezzo esiste e c'è spazio nella borsa, viene rimosso dalla stanza
+	 * e aggiunto all'inventario del giocatore.
+	 *
+	 * @param nome il nome dell'attrezzo da raccogliere
+	 */
+
 	private void prendi(String nome) {
 		if (nome==null) {
 			System.out.println("Cosa vuoi raccogliere?");
