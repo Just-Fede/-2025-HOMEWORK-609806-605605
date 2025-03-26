@@ -53,11 +53,16 @@ public class Borsa {
 	public boolean hasAttrezzo(String nomeAttrezzo) {
 		return this.getAttrezzo(nomeAttrezzo)!=null;
 	}
-	public Attrezzo removeAttrezzo(String nomeAttrezzo) {
-		Attrezzo a = null;
-		// ---> TODO (implementare questo metodo) <---
-		return a;
+	public boolean removeAttrezzo(String nomeAttrezzo) {
+		for (int i=0;i<attrezzi.length;i++){
+			if (attrezzi[i]==getAttrezzo(nomeAttrezzo))
+				attrezzi[i] = null;
+			numeroAttrezzi=numeroAttrezzi-1;
+			return true;
+		}
+		return false;	
 	}
+
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 

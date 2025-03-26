@@ -63,9 +63,8 @@ public class DiaDia {
 			this.aiuto();
 		else if (comandoDaEseguire.getNome().equals("prendi")) 
 			this.prendi(comandoDaEseguire.getParametro());
-		else if (comandoDaEseguire.getNome().equals("posa")) {
-
-		}	
+		else if (comandoDaEseguire.getNome().equals("posa")) 
+			this.posa(comandoDaEseguire.getParametro());
 		else
 			System.out.println("Comando sconosciuto");
 		if (this.partita.vinta()) {
@@ -119,7 +118,7 @@ public class DiaDia {
 	 * se l'attrezzo esiste e c'è spazio nella borsa, viene rimosso dalla stanza
 	 * e aggiunto all'inventario del giocatore.
 	 *
-	 * @param nome il nome dell'attrezzo da raccogliere
+	 * @param nome: il nome dell'attrezzo da raccogliere
 	 */
 
 	private void prendi(String nome) {
@@ -139,9 +138,28 @@ public class DiaDia {
 		}
 		else 
 			System.out.println("Questo attrezzo non è quì presente...");
-
 	}
 
+	private void posa(String nome) {
+		if (partita.player.getInventario().isEmpty()==true) {
+			System.out.println("Il tuo inventario è vuoto");
+			return;
+		}
+		if (nome==null) {
+			System.out.println("Cosa vuoi posare?");
+			return;
+		}
+		else if(partita.player.getInventario().hasAttrezzo(nome)) {
+			if (partita.getStanzaCorrente().contaAttrezzi()<partita.getStanzaCorrente().getNumeroMassimoAttrezzi()) {
+				partita.getStanzaCorrente().addAttrezzo(partita.player.getInventario().getAttrezzo(nome));
+				partita.player.getInventario().removeAttrezzo(nome);
+				System.out.println("Hai posato "+nome);
+			}
+			else 
+				System.out.println("La stanza è piena");
+		}
+
+	}
 	/**
 	 * Comando "Fine".
 	 */

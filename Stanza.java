@@ -97,7 +97,9 @@ public class Stanza {
 	public Attrezzo[] getAttrezzi() {
 		return this.attrezzi;
 	}
-
+	public int getNumeroMassimoAttrezzi() {
+		return NUMERO_MASSIMO_ATTREZZI;
+	}
 	/**
 	 * Mette un attrezzo nella stanza.
 	 * @param attrezzo l'attrezzo da mettere nella stanza.
@@ -112,6 +114,15 @@ public class Stanza {
 		else {
 			return false;
 		}
+	}
+
+	public int contaAttrezzi() {
+		int count=0;
+		for (int i=0;i<attrezzi.length;i++) {
+			if (attrezzi[i]!=null)
+				count++;
+		}
+		return count;
 	}
 
 	/**
