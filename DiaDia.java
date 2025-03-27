@@ -1,6 +1,5 @@
-
-
 import java.util.Scanner;
+import it.uniroma3.diadia.ambienti.*;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -43,6 +42,7 @@ public class DiaDia {
 		do		
 			istruzione = scannerDiLinee.nextLine();
 		while (!processaIstruzione(istruzione));
+		scannerDiLinee.close();
 	}   
 
 
@@ -94,11 +94,14 @@ public class DiaDia {
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
-	private void vai(String direzione) {
+	private void vai(String direzione) 
+	{
 		if(direzione==null)
 			System.out.println("Dove vuoi andare ?");
+		
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+		
 		if (prossimaStanza == null)
 			System.out.println("Direzione inesistente");
 		else {
