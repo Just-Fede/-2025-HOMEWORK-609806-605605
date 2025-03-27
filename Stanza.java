@@ -186,9 +186,10 @@ public class Stanza {
 	public boolean removeAttrezzo(Attrezzo attrezzoDaEliminare) {
 		for (int i=0;i<attrezzi.length;i++) 
 		{
-			if (attrezzi[i]==attrezzoDaEliminare)
+			if (attrezzi[i]==attrezzoDaEliminare) {
 				attrezzi[i] = null;
-			return true;
+				return true;
+			}
 		}
 		return false;	
 	}

@@ -55,10 +55,11 @@ public class Borsa {
 	}
 	public boolean removeAttrezzo(String nomeAttrezzo) {
 		for (int i=0;i<attrezzi.length;i++){
-			if (attrezzi[i]==getAttrezzo(nomeAttrezzo))
+			if (attrezzi[i]==getAttrezzo(nomeAttrezzo)) {
 				attrezzi[i] = null;
-			numeroAttrezzi=numeroAttrezzi-1;
-			return true;
+				numeroAttrezzi=numeroAttrezzi-1;
+				return true;
+			}
 		}
 		return false;	
 	}

@@ -145,6 +145,8 @@ public class DiaDia {
 			System.out.println("Il tuo inventario è vuoto");
 			return;
 		}
+		else if(partita.getStanzaCorrente().contaAttrezzi()==10)
+			System.out.println("La stanza è piena");
 		if (nome==null) {
 			System.out.println("Cosa vuoi posare?");
 			return;
@@ -155,9 +157,10 @@ public class DiaDia {
 				partita.player.getInventario().removeAttrezzo(nome);
 				System.out.println("Hai posato "+nome);
 			}
-			else 
-				System.out.println("La stanza è piena");
+
 		}
+		else 
+			System.out.println("Non possiedi questo oggetto");
 
 	}
 	/**
