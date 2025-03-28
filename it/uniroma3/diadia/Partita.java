@@ -1,3 +1,4 @@
+package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
@@ -24,8 +25,10 @@ public class Partita {
 	}
 
 	public Labirinto getLabirinto()
-	{return this.labirinto;}
-	
+	{
+		return this.labirinto;
+	}
+
 	public void setStanzaCorrente(Stanza stanzaCorrente) {
 		this.stanzaCorrente = stanzaCorrente;
 	}
@@ -53,7 +56,7 @@ public class Partita {
 	 * Restituisce vero se e solo se la partita e' stata persa
 	 * @return vero se partita persa
 	 */
-	
+
 	public boolean persa() {
 		return (player.getCfu() == 0);
 	}
@@ -65,5 +68,5 @@ public class Partita {
 	public void setFinita() {
 		this.finita = true;
 	}
-	
+
 }

@@ -26,11 +26,13 @@ public class Borsa {
 	public int getPesoMax() {
 		return pesoMax;
 	}
-	public Attrezzo getAttrezzo(String nomeAttrezzo) {
+	public Attrezzo getAttrezzo(String nomeAttrezzo) 
+	{
 		Attrezzo a = null;
 		for (int i= 0; i<this.numeroAttrezzi; i++)
-			if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
-				a = attrezzi[i];
+			if(this.attrezzi[i] != null)
+				if (this.attrezzi[i].getNome().equals(nomeAttrezzo))
+					a = attrezzi[i];
 
 		return a;
 	}
@@ -53,16 +55,29 @@ public class Borsa {
 	public boolean isEmpty() {
 		return this.numeroAttrezzi == 0;
 	}
-	public boolean hasAttrezzo(String nomeAttrezzo) {
+	public boolean hasAttrezzo(String nomeAttrezzo) 
+	{
 		return this.getAttrezzo(nomeAttrezzo)!=null;
 	}
-	public boolean removeAttrezzo(String nomeAttrezzo) {
-		for (int i=0;i<attrezzi.length;i++){
-			if (attrezzi[i]==getAttrezzo(nomeAttrezzo)) {
-				attrezzi[i] = null;
-				numeroAttrezzi=numeroAttrezzi-1;
-				return true;
-			}
+	public boolean removeAttrezzo(String nomeAttrezzo) 
+	{
+
+		for (int i=0;i<attrezzi.length;i++)
+		{
+			if(attrezzi[i] != null)
+				if (attrezzi[i]==getAttrezzo(nomeAttrezzo)) 
+				{
+					attrezzi[i] = null;
+					numeroAttrezzi=numeroAttrezzi-1;
+					
+					//Slitto gli oggetti
+					for(int j=i;j<numeroAttrezzi;j++)
+					{
+						attrezzi[j]=attrezzi[j+1];
+					}
+					
+					return true;
+				}
 		}
 		return false;	
 	}
