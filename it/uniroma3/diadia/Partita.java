@@ -2,6 +2,7 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
+import it.uniorma3.comandi.*;
 
 /**
  * Questa classe modella una partita del gioco
@@ -11,13 +12,22 @@ import it.uniroma3.diadia.giocatore.Giocatore;
  * @version base
  */
 
-public class Partita {
+public class Partita 
+{
 
 	private Labirinto labirinto = new Labirinto();
 	public Giocatore player = new Giocatore();
 	private Stanza stanzaCorrente;
 	private boolean finita;
 
+	public Aiuto aiuto = new Aiuto();
+	public Vai vai = new Vai();
+	public Prendi prendi = new Prendi();
+	public Posa posa = new Posa();
+	public Fine fine = new Fine();
+	public Guarda guarda = new Guarda();
+	
+	
 	public Partita(){
 		labirinto.creaStanze();
 		this.finita = false;
