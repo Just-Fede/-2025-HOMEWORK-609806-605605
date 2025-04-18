@@ -12,4 +12,14 @@ public class ComandoNonValido implements Comando
 		io.mostraMessaggio("Comando Inesistente");
 		return true;
 	}
+	@Override
+	public String getNome()
+	{
+		return "nonValido";
+	}
+	@Override
+	public String getParametro()
+	{
+		return null;
+	}
 }

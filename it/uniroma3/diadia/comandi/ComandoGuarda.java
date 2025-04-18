@@ -16,4 +16,14 @@ public class ComandoGuarda implements Comando
 		
 		return true;
 	}
+	@Override
+	public String getNome()
+	{
+		return "guarda";
+	}
+	@Override
+	public String getParametro()
+	{
+		return null;
+	}
 }

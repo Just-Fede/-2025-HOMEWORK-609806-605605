@@ -11,4 +11,14 @@ public class ComandoFine implements Comando
 		io.mostraMessaggio("Grazie di aver giocato!");  // si desidera smettere
 		return true;
 	}
+	@Override
+	public String getNome()
+	{
+		return "fine";
+	}
+	@Override
+	public String getParametro()
+	{
+		return null;
+	}
 }

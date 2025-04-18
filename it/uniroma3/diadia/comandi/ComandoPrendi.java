@@ -44,4 +44,14 @@ public class ComandoPrendi implements Comando
 			return false;
 		}
 	}
+	@Override
+	public String getNome()
+	{
+		return "prendi";
+	}
+	@Override
+	public String getParametro()
+	{
+		return cosaPrendere;
+	}
 }

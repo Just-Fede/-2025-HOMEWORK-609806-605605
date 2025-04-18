@@ -48,4 +48,14 @@ public class ComandoPosa implements Comando
 		}
 		return false;
 	}
+	@Override
+	public String getNome()
+	{
+		return "posa";
+	}
+	@Override
+	public String getParametro()
+	{
+		return cosaPosare;
+	}
 }

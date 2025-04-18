@@ -16,4 +16,15 @@ public class ComandoAiuto implements Comando
 		return true;
 	}
 	
+	@Override
+	public String getNome()
+	{
+		return "aiuto";
+	}
+	@Override
+	public String getParametro()
+	{
+		return null;
+	}
+	
 }

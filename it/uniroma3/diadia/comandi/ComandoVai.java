@@ -43,4 +43,14 @@ public class ComandoVai implements Comando
 		io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
 		return true;
 	}
+	@Override
+	public String getNome()
+	{
+		return "vai";
+	}
+	@Override
+	public String getParametro()
+	{
+		return direzione;
+	}
 }
