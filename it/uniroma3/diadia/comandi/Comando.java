@@ -3,5 +3,5 @@ import it.uniroma3.diadia.*;
 
 public interface Comando 
 {
-	public void esegui(Partita partita);
+	public boolean esegui(Partita partita);
 }

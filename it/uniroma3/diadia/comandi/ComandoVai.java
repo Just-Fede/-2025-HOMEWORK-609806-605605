@@ -15,7 +15,7 @@ public class ComandoVai implements Comando
 	}
 	
 	@Override
-	public void esegui(Partita partita)
+	public boolean esegui(Partita partita)
 	{
 		Stanza prossimaStanza = null;
 
@@ -23,7 +23,7 @@ public class ComandoVai implements Comando
 		{
 			io.mostraMessaggio("Dove vuoi andare ?");
 			io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
-			return;
+			return false;
 		}
 
 		prossimaStanza = partita.getStanzaCorrente().getStanzaAdiacente(direzione);
@@ -31,7 +31,7 @@ public class ComandoVai implements Comando
 		if (prossimaStanza == null) 
 		{
 			io.mostraMessaggio("Direzione inesistente");
-			return;
+			return false;
 		}
 
 		partita.setStanzaCorrente(prossimaStanza);
@@ -41,5 +41,6 @@ public class ComandoVai implements Comando
 		partita.player.setCfu(cfu-1);
 		
 		io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
+		return true;
 	}
 }

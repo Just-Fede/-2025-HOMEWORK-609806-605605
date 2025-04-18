@@ -7,8 +7,9 @@ public class ComandoNonValido implements Comando
 {
 	IOConsole io = new IOConsole();
 	@Override
-	public void esegui(Partita partita)
+	public boolean esegui(Partita partita)
 	{
 		io.mostraMessaggio("Comando Inesistente");
+		return true;
 	}
 }
