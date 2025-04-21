@@ -13,7 +13,8 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 
 
-public class Labirinto {
+public class Labirinto 
+{
 
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
@@ -28,7 +29,7 @@ public class Labirinto {
 		Attrezzo osso = new Attrezzo("osso",1);
 
 		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
+		StanzaMagica atrio = new StanzaMagica("Atrio",1);
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
@@ -61,7 +62,7 @@ public class Labirinto {
 		return this.stanzaVincente;
 	}
 
-	
+
 	public Stanza getStanzaIniziale() {
 		return this.stanzaIniziale;
 	}
