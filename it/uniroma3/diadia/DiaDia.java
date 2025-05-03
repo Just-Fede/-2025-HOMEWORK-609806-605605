@@ -44,7 +44,10 @@ public class DiaDia {
 			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione,io));
 	}   
-
+	
+	public Partita getPartita() {
+		return partita;
+	}
 	/**
 	 * Processa una istruzione 
 	 *
