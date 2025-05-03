@@ -3,8 +3,10 @@ import it.uniroma3.diadia.*;
 
 public class ComandoFine implements Comando
 {
-	IOConsole io = new IOConsole();
-
+	private IO io;
+	public ComandoFine(IO io) {
+		this.io=io;
+	}
 	@Override
 	public boolean esegui(Partita partita)
 	{

@@ -3,8 +3,10 @@ import it.uniroma3.diadia.*;
 
 public class ComandoGuarda implements Comando
 {
-	IOConsole io = new IOConsole();
-
+	private IO io;
+	public ComandoGuarda(IO io) {
+		this.io=io;
+	}
 	@Override
 	public boolean esegui(Partita partita)
 	{
@@ -13,7 +15,7 @@ public class ComandoGuarda implements Comando
 
 		io.mostraMessaggio("- - - - - - \n[INVENTARIO]");
 		io.mostraMessaggio(partita.player.getInventario().toString());
-		
+
 		return true;
 	}
 	@Override

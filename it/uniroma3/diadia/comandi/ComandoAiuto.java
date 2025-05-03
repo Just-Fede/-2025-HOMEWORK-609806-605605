@@ -3,19 +3,21 @@ import it.uniroma3.diadia.*;
 
 public class ComandoAiuto implements Comando
 {
-	IOConsole io = new IOConsole();
-	
+	private IO io;	
+	public ComandoAiuto(IO io) {
+		this.io=io;
+	}
 	@Override
 	public boolean esegui(Partita partita)
 	{
 		final String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
-		
+
 		for(int i=0; i< elencoComandi.length; i++) 
 			io.mostraMessaggio(elencoComandi[i]+" ");
 		io.mostraMessaggio("");
 		return true;
 	}
-	
+
 	@Override
 	public String getNome()
 	{
@@ -26,5 +28,5 @@ public class ComandoAiuto implements Comando
 	{
 		return null;
 	}
-	
+
 }

@@ -25,11 +25,11 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	private IOConsole io;
+	private IO io;
 
 	private Partita partita;
 
-	public DiaDia(IOConsole io) 
+	public DiaDia(IO io) 
 	{
 		this.io=io;
 		this.partita = new Partita();
@@ -41,8 +41,8 @@ public class DiaDia {
 
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
 		do		
-			istruzione = io.leggiriga();
-		while (!processaIstruzione(istruzione));
+			istruzione = io.leggiRiga();
+		while (!processaIstruzione(istruzione,io));
 	}   
 
 	/**
@@ -51,10 +51,10 @@ public class DiaDia {
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
 	 */
 	
-	private boolean processaIstruzione(String istruzione) 
+	private boolean processaIstruzione(String istruzione, IO io) 
 	{
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica();
+		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(io);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(partita);
 		
@@ -69,7 +69,7 @@ public class DiaDia {
 
 	public static void main(String[] argc) 
 	{
-		IOConsole io=new IOConsole();
+		IO io=new IOConsole();
 		DiaDia gioco = new DiaDia(io);
 		gioco.gioca();
 	}

@@ -5,11 +5,11 @@ import it.uniroma3.diadia.*;
 public class ComandoPrendi implements Comando
 {
 	private String cosaPrendere;
-	IOConsole io = new IOConsole();
-
-	public ComandoPrendi(String parametro)
+	private IO io;
+	public ComandoPrendi(String parametro, IO io)
 	{
 		this.cosaPrendere = parametro;
+		this.io=io;
 	}
 
 	@Override

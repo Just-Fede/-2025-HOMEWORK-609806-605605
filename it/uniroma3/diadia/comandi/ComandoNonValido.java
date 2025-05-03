@@ -5,7 +5,10 @@ import it.uniroma3.diadia.Partita;
 
 public class ComandoNonValido implements Comando
 {
-	IOConsole io = new IOConsole();
+	private IO io;	
+	public ComandoNonValido(IO io) {
+		this.io=io;
+	}
 	@Override
 	public boolean esegui(Partita partita)
 	{

@@ -3,12 +3,13 @@ import it.uniroma3.diadia.*;
 
 public class ComandoPosa implements Comando
 {
-	IOConsole io = new IOConsole();
+	private IO io;
 	private String cosaPosare;
 
-	public ComandoPosa(String parametro)
+	public ComandoPosa(String parametro,IO io)
 	{
 		this.cosaPosare = parametro;
+		this.io=io;
 	}
 
 	@Override

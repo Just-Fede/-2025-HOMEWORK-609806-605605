@@ -2,18 +2,20 @@ package it.uniroma3.diadia.comandi;
 
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.IOConsole;
 
 public class ComandoVai implements Comando
 {
-	IOConsole io = new IOConsole();
+	private IO io;
 	private String direzione;
-	
-	public ComandoVai(String parametro)
+
+	public ComandoVai(String parametro, IO io)
 	{
 		this.direzione = parametro;
+		this.io=io;
 	}
-	
+
 	@Override
 	public boolean esegui(Partita partita)
 	{
@@ -39,7 +41,7 @@ public class ComandoVai implements Comando
 
 		int cfu = partita.player.getCfu();
 		partita.player.setCfu(cfu-1);
-		
+
 		io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
 		return true;
 	}
