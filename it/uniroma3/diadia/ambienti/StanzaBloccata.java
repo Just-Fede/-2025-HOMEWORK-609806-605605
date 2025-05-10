@@ -1,19 +1,36 @@
 package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.*;
 
-
-public class StanzaBloccata extends Stanza{
+public class StanzaBloccata extends Stanza
+{
 	String oggettoNecessario="piede di porco";
 	String direzioneBloccata;
-	public StanzaBloccata(String nome, String direzioneBloccata){
+	
+	private IO io;	
+	
+	public StanzaBloccata(String nome, String direzioneBloccata,IO io)
+	{
 		super(nome);
 		this.direzioneBloccata=direzioneBloccata;
+		this.io=io;
 	}
-	public Stanza getStanzaAdiacente(String dir) {
-		if ( this.hasAttrezzo(oggettoNecessario)) {
+	
+	@Override
+	public Stanza getStanzaAdiacente(String dir) 
+	{	
+		if ( this.hasAttrezzo(oggettoNecessario)) 
+		{
+			io.mostraMessaggio("Utilizzi il ");
+			io.mostraMessaggio(oggettoNecessario);
+			
 			return super.getStanzaAdiacente(dir);
 		}
-		else {
+		
+		else 
+		{	
+			io.mostraMessaggio("L'uscita è barricata...");
 			return this;
 		}
 	}
+	
 }

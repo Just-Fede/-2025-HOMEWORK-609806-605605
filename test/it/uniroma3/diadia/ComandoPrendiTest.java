@@ -12,6 +12,8 @@ class ComandoPrendiTest
 	@Test
 	void test() 
 	{
+		IO io = new IOConsole();
+		
 		Attrezzo manualeJava = new Attrezzo("Manuale Java",5);
 		Attrezzo oldreakIlNano = new Attrezzo("Oldrek Il Nano",2000);
 		
@@ -21,18 +23,18 @@ class ComandoPrendiTest
 		Partita partita = new Partita();
 		partita.setStanzaCorrente(atrio);
 		
-		Comando comando = new ComandoPosa("");
+		Comando comando = new ComandoPosa("",io);
 		assertFalse(comando.esegui(partita));
 		
 		partita.player.aggiungiAllaBorsa(manualeJava);
 		
-		comando = new ComandoPosa("");
+		comando = new ComandoPosa("",io);
 		assertFalse(comando.esegui(partita));
 		
-		comando = new ComandoPosa("Oldreak Il Nano");
+		comando = new ComandoPosa("Oldreak Il Nano",io);
 		assertFalse(comando.esegui(partita));
 		
-		comando = new ComandoPosa("Manuale Java");
+		comando = new ComandoPosa("Manuale Java",io);
 		assertTrue(comando.esegui(partita));
 		assertFalse(comando.esegui(partita));
 	}

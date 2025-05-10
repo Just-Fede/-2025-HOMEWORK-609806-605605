@@ -10,7 +10,7 @@ public class ComandoAiuto implements Comando
 	@Override
 	public boolean esegui(Partita partita)
 	{
-		final String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
+		final String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","guarda"};
 
 		for(int i=0; i< elencoComandi.length; i++) 
 			io.mostraMessaggio(elencoComandi[i]+" ");

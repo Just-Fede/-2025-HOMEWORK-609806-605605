@@ -9,11 +9,12 @@ import org.junit.jupiter.api.Test;
 class FabbricaDiComandiFisarmonicaTest 
 {
 	private FabbricaDiComandiFisarmonica fabbricaTest;
+	IO io = new IOConsole();
 
 	@BeforeEach
 	void setUp()
 	{
-		fabbricaTest = new FabbricaDiComandiFisarmonica();
+		fabbricaTest = new FabbricaDiComandiFisarmonica(io);
 	}
 
 	@Test

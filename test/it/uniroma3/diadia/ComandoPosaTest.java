@@ -1,4 +1,4 @@
-package test.it.uniroma3.diadia;
+package it.uniroma3.diadia;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,6 +15,9 @@ class ComandoPosaTest
 	@Test
 	void test() 
 	{
+		
+		IO io = new IOConsole();
+		
 		Attrezzo manualeJava = new Attrezzo("Manuale Java",5);
 		Attrezzo oldreakIlNano = new Attrezzo("Oldrek Il Nano",2000);
 
@@ -25,14 +28,14 @@ class ComandoPosaTest
 		Partita partita = new Partita();
 		partita.setStanzaCorrente(atrio);
 
-		Comando comando = new ComandoPrendi("");
+		Comando comando = new ComandoPrendi("",io);
 
 		assertFalse(comando.esegui(partita));
 
-		comando = new ComandoPrendi("Oldreak Il Nano");
+		comando = new ComandoPrendi("Oldreak Il Nano",io);
 		assertFalse(comando.esegui(partita));
 
-		comando = new ComandoPrendi("Manuale Java");
+		comando = new ComandoPrendi("Manuale Java",io);
 		assertTrue(comando.esegui(partita));
 	}
 
