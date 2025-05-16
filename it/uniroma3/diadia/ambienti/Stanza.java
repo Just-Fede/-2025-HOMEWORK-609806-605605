@@ -94,7 +94,8 @@ public class Stanza {
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() {
+	public Attrezzo[] getAttrezzi() 
+	{
 		return this.attrezzi;
 	}
 	public int getNumeroMassimoAttrezzi() {

@@ -24,11 +24,14 @@ public class ComandoPrendi implements Comando
 		else if (partita.getStanzaCorrente().hasAttrezzo(cosaPrendere)) 
 		{
 			if(partita.player.aggiungiAllaBorsa(partita.getStanzaCorrente().getAttrezzo(cosaPrendere)))
+			{
 				io.mostraMessaggio("Oggetto aggiunto all'inventario e ... ");
+			}
 
 			if(partita.getStanzaCorrente().removeAttrezzo(partita.getStanzaCorrente().getAttrezzo(cosaPrendere))) 
 			{
 				io.mostraMessaggio("Ora non è più per terra!\n" + partita.player.getInventario().toString());
+				partita.getFrame().mostraStanza(partita.getStanzaCorrente());
 				return true;
 			}
 

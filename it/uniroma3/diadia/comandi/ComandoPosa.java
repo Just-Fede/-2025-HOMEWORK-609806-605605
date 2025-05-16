@@ -38,6 +38,7 @@ public class ComandoPosa implements Comando
 				partita.player.getInventario().removeAttrezzo(cosaPosare);
 				io.mostraMessaggio("Hai posato "+ cosaPosare);
 				io.mostraMessaggio(partita.player.getInventario().toString());
+				partita.getFrame().mostraStanza(partita.getStanzaCorrente());
 				return true;
 			}
 
