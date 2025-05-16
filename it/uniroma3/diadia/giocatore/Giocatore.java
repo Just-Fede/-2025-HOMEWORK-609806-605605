@@ -30,7 +30,7 @@ public class Giocatore
 
 	public boolean aggiungiAllaBorsa(Attrezzo attrezzo)
 	{
-		if( (inventario.getPeso() + attrezzo.getPeso() <= inventario.getPesoMax()) && (inventario.getNumeroAttrezzi() <= inventario.getGrandezza()))
+		if(inventario.getPeso() + attrezzo.getPeso() <= inventario.getPesoMax())
 		{
 			inventario.addAttrezzo(attrezzo);
 			return true;
