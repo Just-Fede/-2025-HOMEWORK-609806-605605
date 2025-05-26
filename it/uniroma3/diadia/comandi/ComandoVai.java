@@ -3,6 +3,7 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.IOConsole;
 
 public class ComandoVai implements Comando
 {
@@ -22,7 +23,6 @@ public class ComandoVai implements Comando
 
 		if(direzione==null)
 		{
-			
 			io.mostraMessaggio("Dove vuoi andare ?");
 			io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
 			return false;
@@ -41,9 +41,8 @@ public class ComandoVai implements Comando
 
 		int cfu = partita.player.getCfu();
 		partita.player.setCfu(cfu-1);
-		
+
 		io.mostraMessaggio("\n[STANZA]\n"+partita.getStanzaCorrente().getDescrizione());
-		partita.getFrame().mostraStanza(prossimaStanza);
 		return true;
 	}
 	@Override

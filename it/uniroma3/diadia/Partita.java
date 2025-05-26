@@ -2,7 +2,6 @@ package it.uniroma3.diadia;
 import it.uniroma3.diadia.ambienti.Labirinto;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.giocatore.Giocatore;
-import it.uniroma3.grafica.FinestraPrincipale;
 
 /**
  * Questa classe modella una partita del gioco
@@ -18,16 +17,11 @@ public class Partita {
 	public Giocatore player = new Giocatore();
 	private Stanza stanzaCorrente;
 	private boolean finita;
-	private FinestraPrincipale w;
 
-	public Partita()
-	{
+	public Partita(){
 		labirinto.creaStanze();
 		this.finita = false;
 		stanzaCorrente=labirinto.getStanzaIniziale();
-		
-		w = new FinestraPrincipale();
-		w.mostraStanza(stanzaCorrente);
 	}
 
 	public Labirinto getLabirinto()
@@ -73,11 +67,6 @@ public class Partita {
 	 */
 	public void setFinita() {
 		this.finita = true;
-	}
-	
-	public FinestraPrincipale getFrame()
-	{
-		return this.w;
 	}
 
 }

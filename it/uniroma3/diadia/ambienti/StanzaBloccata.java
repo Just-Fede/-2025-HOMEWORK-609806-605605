@@ -3,7 +3,7 @@ import it.uniroma3.diadia.*;
 
 public class StanzaBloccata extends Stanza
 {
-	String oggettoNecessario="piede di porco";
+	String oggettoNecessario="piedediporco";
 	String direzioneBloccata;
 	
 	private IO io;	

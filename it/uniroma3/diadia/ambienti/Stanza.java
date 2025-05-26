@@ -1,5 +1,8 @@
 package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  * Classe Stanza - una stanza in un gioco di ruolo.
@@ -19,8 +22,8 @@ public class Stanza {
 
 	private String nome;
 
-	private Attrezzo[] attrezzi;
-	private int numeroAttrezzi;
+	private List<Attrezzo> attrezzi;
+	//	private int numeroAttrezzi;
 
 	private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
@@ -35,10 +38,10 @@ public class Stanza {
 	{
 		this.nome = nome;
 		this.numeroStanzeAdiacenti = 0;
-		this.numeroAttrezzi = 0;
+		//		this.numeroAttrezzi = 0;
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
-		this.attrezzi = new Attrezzo[NUMERO_MASSIMO_ATTREZZI];
+		this.attrezzi = new ArrayList<Attrezzo>();
 	}
 
 	/**
@@ -94,10 +97,10 @@ public class Stanza {
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() 
-	{
-		return this.attrezzi;
+	public Attrezzo[] getAttrezzi() {
+		return this.attrezzi.toArray(new Attrezzo[0]);
 	}
+
 	public int getNumeroMassimoAttrezzi() {
 		return NUMERO_MASSIMO_ATTREZZI;
 	}
@@ -108,22 +111,22 @@ public class Stanza {
 	 */
 	public boolean addAttrezzo(Attrezzo attrezzo) 
 	{
-		if (this.numeroAttrezzi < NUMERO_MASSIMO_ATTREZZI) 
+		if (this.contaAttrezzi() < NUMERO_MASSIMO_ATTREZZI) 
 		{
-			this.attrezzi[numeroAttrezzi] = attrezzo;
-			this.numeroAttrezzi++;
+			attrezzi.add(attrezzo);
 			return true;
 		}
 		else return false;
 	}
 
 	public int contaAttrezzi() {
-		int count=0;
+		/*		int count=0;
 		for (int i=0;i<attrezzi.length;i++) {
 			if (attrezzi[i]!=null)
 				count++;
 		}
-		return count;
+		return count;*/
+		return attrezzi.size();
 	}
 
 	/**
@@ -185,13 +188,10 @@ public class Stanza {
 	 * @return true se l'attrezzo e' stato rimosso, false altrimenti
 	 */
 	public boolean removeAttrezzo(Attrezzo attrezzoDaEliminare) {
-		for (int i=0;i<attrezzi.length;i++) 
-		{
-			if (attrezzi[i]==attrezzoDaEliminare) {
-				attrezzi[i] = null;
-				return true;
-			}
-		}
+		if (attrezzi.contains(attrezzoDaEliminare)) {
+			attrezzi.remove(attrezzoDaEliminare);
+			return true;
+		}		
 		return false;	
 	}
 
