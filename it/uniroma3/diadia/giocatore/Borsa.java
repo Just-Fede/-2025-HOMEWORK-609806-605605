@@ -81,19 +81,19 @@ public class Borsa {
 		return false;	
 	}
 
-	List<Attrezzo> getContenutoOrdinatoPerPeso(){
+	public List<Attrezzo> getContenutoOrdinatoPerPeso(){
 		List<Attrezzo>ordinati = new ArrayList<Attrezzo>(this.attrezzi);
 		ordinati.sort(Comparator.comparing(Attrezzo::getPeso).thenComparing(Attrezzo::getNome));
 		return ordinati;
 	}
 
-	SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
+	public SortedSet<Attrezzo> getContenutoOrdinatoPerNome(){
 		SortedSet<Attrezzo> ordinati= new TreeSet<>(Comparator.comparing(Attrezzo::getNome));
 		ordinati.addAll(this.attrezzi);
 		return ordinati;
 	}
-	
-	Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
+
+	public Map<Integer,Set<Attrezzo>> getContenutoRaggruppatoPerPeso(){
 		Map<Integer,Set<Attrezzo>> mappa=new HashMap<>();
 		for (Attrezzo a:this.attrezzi) {
 			int peso=a.getPeso();
@@ -105,12 +105,19 @@ public class Borsa {
 		return mappa;
 	}
 
+	public	SortedSet<Attrezzo> getSortedSetOrdinatoPerPeso(){
+		SortedSet<Attrezzo> ordinati=new TreeSet<>(Comparator.comparing(Attrezzo::getPeso).thenComparing(Attrezzo::getNome));
+		ordinati.addAll(this.attrezzi);
+		return ordinati; 
+	}
+
 	public String toString() {
 		StringBuilder s = new StringBuilder();
+		List<Attrezzo> stamp=getContenutoOrdinatoPerPeso();
 
 		if (!this.isEmpty()) {
 			s.append("Contenuto borsa ("+this.getPeso()+"kg/"+this.getPesoMax()+"kg): ");
-			for (Attrezzo stampa:attrezzi) {
+			for (Attrezzo stampa:stamp) {
 				s.append(stampa.toString()+" ");
 			}
 		}
