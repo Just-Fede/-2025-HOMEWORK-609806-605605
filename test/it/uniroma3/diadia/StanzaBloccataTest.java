@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.StanzaBloccata;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -24,16 +26,25 @@ public class StanzaBloccataTest
 	public void setUp()
 	{
 		
-		stanzaInizialeTest = new StanzaBloccata("Stanza Iniziale Test","nord",io);
+		stanzaInizialeTest = new StanzaBloccata("Stanza Iniziale Test","piedediporco","nord");
 		stanzaFinaleTest = new Stanza("Stanza Finale");
 		
-		partitaTest = new Partita();
+		partitaTest = new Partita(creaBilocale());
 		partitaTest.setStanzaCorrente(stanzaInizialeTest);
 		
 		stanzaInizialeTest.impostaStanzaAdiacente("nord", stanzaFinaleTest);
 		stanzaFinaleTest.impostaStanzaAdiacente("sud", stanzaInizialeTest);
 		
-		piedeDiPorco = new Attrezzo("piede di porco",1);
+		piedeDiPorco = new Attrezzo("piedediporco",1);
+	}
+	
+	public Labirinto creaBilocale() {
+		Labirinto bilocale=new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Corridoio")
+				.addAdiacenza("Atrio", "Corridoio", "nord")
+				.getLabirinto();
+		return bilocale;
 	}
 	
 	@Test

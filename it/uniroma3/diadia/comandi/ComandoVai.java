@@ -3,18 +3,13 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.Partita;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.IO;
-import it.uniroma3.diadia.IOConsole;
 
-public class ComandoVai implements Comando
+public class ComandoVai extends AbstractComando
 {
 	private IO io;
 	private String direzione;
 
-	public ComandoVai(String parametro, IO io)
-	{
-		this.direzione = parametro;
-		this.io=io;
-	}
+
 
 	@Override
 	public boolean esegui(Partita partita)
@@ -54,5 +49,15 @@ public class ComandoVai implements Comando
 	public String getParametro()
 	{
 		return direzione;
+	}
+
+	@Override
+	public void setParametro(String parametro) {
+		this.direzione=parametro;
+	}
+
+	@Override
+	public void setIO(IO io) {
+		this.io=io;
 	}
 }

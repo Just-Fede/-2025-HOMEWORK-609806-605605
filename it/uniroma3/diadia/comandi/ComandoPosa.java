@@ -1,15 +1,13 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.*;
 
-public class ComandoPosa implements Comando
+public class ComandoPosa extends AbstractComando
 {
 	private IO io;
 	private String cosaPosare;
 
-	public ComandoPosa(String parametro,IO io)
-	{
-		this.cosaPosare = parametro;
-		this.io=io;
+	public void setParametro(String parametro) {
+		cosaPosare=parametro;
 	}
 
 	@Override
@@ -58,5 +56,10 @@ public class ComandoPosa implements Comando
 	public String getParametro()
 	{
 		return cosaPosare;
+	}
+
+	@Override
+	public void setIO(IO io) {
+		this.io=io;
 	}
 }

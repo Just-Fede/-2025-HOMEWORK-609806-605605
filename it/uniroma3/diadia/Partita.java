@@ -13,13 +13,13 @@ import it.uniroma3.diadia.giocatore.Giocatore;
 
 public class Partita {
 
-	private Labirinto labirinto = new Labirinto();
+	private Labirinto labirinto;
 	public Giocatore player = new Giocatore();
 	private Stanza stanzaCorrente;
 	private boolean finita;
 
-	public Partita(){
-		labirinto.creaStanze();
+	public Partita(Labirinto labirinto){
+		this.labirinto=labirinto;
 		this.finita = false;
 		stanzaCorrente=labirinto.getStanzaIniziale();
 	}

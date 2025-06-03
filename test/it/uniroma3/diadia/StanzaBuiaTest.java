@@ -1,10 +1,13 @@
 package it.uniroma3.diadia;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.ambienti.Stanza;
 import it.uniroma3.diadia.ambienti.StanzaBuia;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
@@ -20,10 +23,10 @@ public class StanzaBuiaTest
 	@BeforeEach
 	public void setUp()
 	{
-		stanzaInizialeTest = new StanzaBuia("Stanza Iniziale Test");
+		stanzaInizialeTest = new StanzaBuia("Stanza Iniziale Test","lanterna");
 		stanzaFinaleTest = new Stanza("Stanza Finale");
 
-		partitaTest = new Partita();
+		partitaTest = new Partita(creaBilocale());
 		partitaTest.setStanzaCorrente(stanzaInizialeTest);
 
 		stanzaInizialeTest.impostaStanzaAdiacente("nord", stanzaFinaleTest);
@@ -31,7 +34,16 @@ public class StanzaBuiaTest
 
 		lanterna = new Attrezzo("lanterna",1);
 	}
-
+	
+	public Labirinto creaBilocale() {
+		Labirinto bilocale=new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Corridoio")
+				.addAdiacenza("Atrio", "Corridoio", "nord")
+				.getLabirinto();
+		return bilocale;
+	}
+	
 	@Test
 	public void testStanzaBuia() 
 	{

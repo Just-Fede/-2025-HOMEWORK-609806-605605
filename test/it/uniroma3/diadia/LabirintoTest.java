@@ -12,14 +12,22 @@ public class LabirintoTest
 	@BeforeEach
 	public void setUp()
 	{
-		labirintoTest = new Labirinto();
-		labirintoTest.creaStanze();
+		labirintoTest = creaBilocale();
+	}
+	
+	public Labirinto creaBilocale() {
+		Labirinto bilocale=new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Corridoio")
+				.addAdiacenza("Atrio", "Corridoio", "nord")
+				.getLabirinto();
+		return bilocale;
 	}
 
 	@Test
 	public void testGetStanzaVincete()
 	{
-		assertEquals(labirintoTest.getStanzaVincente().getNome(), "Biblioteca");
+		assertEquals(labirintoTest.getStanzaVincente().getNome(), "Corridoio");
 	}
 
 	@Test

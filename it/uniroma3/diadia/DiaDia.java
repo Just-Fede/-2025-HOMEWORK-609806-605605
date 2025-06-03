@@ -1,5 +1,9 @@
 package it.uniroma3.diadia;
-import it.uniroma3.diadia.comandi.*;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+import it.uniroma3.diadia.comandi.Comando;
+import it.uniroma3.diadia.comandi.FabbricaComandiRiflessiva;
+import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -29,13 +33,17 @@ public class DiaDia {
 
 	private Partita partita;
 
-	public DiaDia(IO io) 
+	private Labirinto labirinto;
+
+	public DiaDia(Labirinto labirinto,IO io) 
 	{
 		this.io=io;
-		this.partita = new Partita();
+		this.labirinto=labirinto;
+		this.partita = new Partita(labirinto);
+
 	}
 
-	public void gioca() 
+	public void gioca() throws Exception 
 	{
 		String istruzione; 
 
@@ -44,7 +52,7 @@ public class DiaDia {
 			istruzione = io.leggiRiga();
 		while (!processaIstruzione(istruzione,io));
 	}   
-	
+
 	public Partita getPartita() {
 		return partita;
 	}
@@ -52,28 +60,42 @@ public class DiaDia {
 	 * Processa una istruzione 
 	 *
 	 * @return true se l'istruzione e' eseguita e il gioco continua, false altrimenti
+	 * @throws Exception 
 	 */
-	
-	private boolean processaIstruzione(String istruzione, IO io) 
+
+	private boolean processaIstruzione(String istruzione, IO io) throws Exception 
 	{
 		Comando comandoDaEseguire;
-		FabbricaDiComandiFisarmonica factory = new FabbricaDiComandiFisarmonica(io);
+		FabbricaDiComandi factory = new FabbricaComandiRiflessiva(io);
 		comandoDaEseguire = factory.costruisciComando(istruzione);
 		comandoDaEseguire.esegui(partita);
-		
+
 		if (this.partita.vinta()) 
 			io.mostraMessaggio("Hai vinto!");
-	
+
 		if(partita.persa()) 
 			io.mostraMessaggio("Hai perso!");
-		
+
 		return this.partita.isFinita();
 	}   
 
-	public static void main(String[] argc) 
+	public static void main(String[] argc) throws Exception 
 	{
 		IO io=new IOConsole();
-		DiaDia gioco = new DiaDia(io);
+		Labirinto labirinto=new LabirintoBuilder()
+			.addStanzaIniziale("salotto")
+			.addAttrezzo("sturacessi", 2)
+			.addStanza("cucina")
+			.addAttrezzo("pentola",1)// dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
+			.addStanzaVincente("camera")
+			.addAdiacenza("salotto", "cucina", "nord")
+			.addAdiacenza("cucina", "camera", "est")
+			.addStanzaBloccata("bagno","est","sturacessi")
+			.addAdiacenza("bagno","salotto" ,"ovest")
+			.addStanza("sgabuzzino")
+			.addAdiacenza("bagno","sgabuzzino", "est")
+			.getLabirinto();
+		DiaDia gioco = new DiaDia(labirinto,io);
 		gioco.gioca();
 	}
 }

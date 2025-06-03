@@ -1,6 +1,6 @@
 package it.uniroma3.diadia.ambienti;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import java.util.List;
+import java.util.*;
 import java.util.ArrayList;
 
 
@@ -24,7 +24,7 @@ public class Stanza {
 
 	private List<Attrezzo> attrezzi;
 	//	private int numeroAttrezzi;
-
+	private Map<String,Stanza> mapStanzeAdiacenti;
 	private Stanza[] stanzeAdiacenti;
 	private int numeroStanzeAdiacenti;
 
@@ -42,6 +42,7 @@ public class Stanza {
 		this.direzioni = new String[NUMERO_MASSIMO_DIREZIONI];
 		this.stanzeAdiacenti = new Stanza[NUMERO_MASSIMO_DIREZIONI];
 		this.attrezzi = new ArrayList<Attrezzo>();
+		this.mapStanzeAdiacenti=new HashMap<>();
 	}
 
 	/**
@@ -56,6 +57,7 @@ public class Stanza {
 			if (direzione.equals(this.direzioni[i])) {
 				this.stanzeAdiacenti[i] = stanza;
 				aggiornato = true;
+				mapStanzeAdiacenti.put(direzione, stanza);
 			}
 		if (!aggiornato)
 			if (this.numeroStanzeAdiacenti < NUMERO_MASSIMO_DIREZIONI) {
@@ -65,6 +67,9 @@ public class Stanza {
 			}
 	}
 
+	public Map<String,Stanza> getMapStanzeAdiacenti(){
+		return mapStanzeAdiacenti;
+	}
 	/**
 	 * Restituisce la stanza adiacente nella direzione specificata
 	 * @param direzione
@@ -97,8 +102,8 @@ public class Stanza {
 	 * Restituisce la collezione di attrezzi presenti nella stanza.
 	 * @return la collezione di attrezzi nella stanza.
 	 */
-	public Attrezzo[] getAttrezzi() {
-		return this.attrezzi.toArray(new Attrezzo[0]);
+	public List<Attrezzo> getAttrezzi() {
+		return this.attrezzi;
 	}
 
 	public int getNumeroMassimoAttrezzi() {
@@ -196,10 +201,10 @@ public class Stanza {
 	}
 
 
-	public String[] getDirezioni() {
-		String[] direzioni = new String[this.numeroStanzeAdiacenti];
+	public List<String> getDirezioni() {
+		List<String> direzioni = new ArrayList<>();
 		for(int i=0; i<this.numeroStanzeAdiacenti; i++)
-			direzioni[i] = this.direzioni[i];
+			direzioni.add(this.direzioni[i]);
 		return direzioni;
 	}
 

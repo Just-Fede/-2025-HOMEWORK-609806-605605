@@ -1,12 +1,9 @@
 package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.*;
 
-public class ComandoGuarda implements Comando
+public class ComandoGuarda extends AbstractComando
 {
 	private IO io;
-	public ComandoGuarda(IO io) {
-		this.io=io;
-	}
 	@Override
 	public boolean esegui(Partita partita)
 	{
@@ -27,5 +24,10 @@ public class ComandoGuarda implements Comando
 	public String getParametro()
 	{
 		return null;
+	}
+
+	@Override
+	public void setIO(IO io) {
+		this.io=io;
 	}
 }

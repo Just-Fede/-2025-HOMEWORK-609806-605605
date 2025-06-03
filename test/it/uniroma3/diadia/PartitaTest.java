@@ -3,6 +3,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
+
 public class PartitaTest 
 {
 	private Partita partita;
@@ -10,7 +13,16 @@ public class PartitaTest
 	@BeforeEach
 	public void setUp()
 	{
-		partita = new Partita();
+		partita = new Partita(creaBilocale());
+	}
+	
+	public Labirinto creaBilocale() {
+		Labirinto bilocale=new LabirintoBuilder()
+				.addStanzaIniziale("Atrio")
+				.addStanzaVincente("Corridoio")
+				.addAdiacenza("Atrio", "Corridoio", "nord")
+				.getLabirinto();
+		return bilocale;
 	}
 
 	@Test

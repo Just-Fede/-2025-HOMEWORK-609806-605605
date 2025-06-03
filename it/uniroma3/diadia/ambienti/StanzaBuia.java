@@ -3,10 +3,11 @@ package it.uniroma3.diadia.ambienti;
 public class StanzaBuia extends Stanza
 {
 	
-	String oggettoNecessario="lanterna";
-	public StanzaBuia(String nome) 
+	String oggettoNecessario;
+	public StanzaBuia(String nome,String key) 
 	{
 		super(nome);
+		oggettoNecessario=key;
 	}
 	
 	@Override
