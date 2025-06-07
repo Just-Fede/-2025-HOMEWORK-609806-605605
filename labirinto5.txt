@@ -1,0 +1,11 @@
+Stanze:biblioteca,N10,N11,N12
+Magica:biblioteca
+Buia: N10 lanterna
+Bloccata:  
+Inizio:biblioteca
+Vincente:N11
+Mago: N10 Merlino Shiauuuuu bacchetta
+Cane: N12 Rex Bau
+Strega: biblioteca Varana AHIUUUU
+Attrezzi:martello 10 biblioteca, lanterna 4 biblioteca
+Uscite:biblioteca nord N10,biblioteca sud N11, N10 sud biblioteca, N11 nord biblioteca, biblioteca est N12, N12 ovest biblioteca

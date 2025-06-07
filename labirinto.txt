@@ -1,0 +1,11 @@
+Stanze:biblioteca,N10,N11
+Magica:
+Buia:
+Bloccata:  
+Inizio:biblioteca
+Vincente:N11
+Mago:
+Cane:
+Strega:
+Attrezzi:martello 10 biblioteca
+Uscite:biblioteca nord N10,biblioteca sud N11, N10 sud biblioteca, N11 nord biblioteca
