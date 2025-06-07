@@ -8,7 +8,7 @@ public class ComandoAiuto extends AbstractComando
 	@Override
 	public boolean esegui(Partita partita)
 	{
-		final String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","guarda"};
+		final String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa","guarda","interagisci","saluta"};
 
 		for(int i=0; i< elencoComandi.length; i++) 
 			io.mostraMessaggio(elencoComandi[i]+" ");

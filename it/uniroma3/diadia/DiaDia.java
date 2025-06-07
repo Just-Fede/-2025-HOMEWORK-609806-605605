@@ -1,9 +1,9 @@
 package it.uniroma3.diadia;
+import java.util.Scanner;
+
 import it.uniroma3.diadia.ambienti.Labirinto;
-import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaComandiRiflessiva;
-import it.uniroma3.diadia.comandi.FabbricaDiComandi;
 
 /**
  * Classe principale di diadia, un semplice gioco di ruolo ambientato al dia.
@@ -43,14 +43,15 @@ public class DiaDia {
 
 	}
 
-	public void gioca() throws Exception 
-	{
+	public void gioca() throws Exception {
 		String istruzione; 
-
+		//		Scanner scannerDiLinee;
 		io.mostraMessaggio(MESSAGGIO_BENVENUTO);
-		do		
+		do {
 			istruzione = io.leggiRiga();
-		while (!processaIstruzione(istruzione,io));
+
+		}while (!processaIstruzione(istruzione) );
+
 	}   
 
 	public Partita getPartita() {
@@ -63,39 +64,43 @@ public class DiaDia {
 	 * @throws Exception 
 	 */
 
-	private boolean processaIstruzione(String istruzione, IO io) throws Exception 
-	{
+	private boolean processaIstruzione(String istruzione) throws Exception {
 		Comando comandoDaEseguire;
-		FabbricaDiComandi factory = new FabbricaComandiRiflessiva(io);
-		comandoDaEseguire = factory.costruisciComando(istruzione);
-		comandoDaEseguire.esegui(partita);
-
-		if (this.partita.vinta()) 
+		FabbricaComandiRiflessiva factory = new FabbricaComandiRiflessiva(this.io);
+		try {
+			comandoDaEseguire = factory.costruisciComando(istruzione);
+		} catch (ClassNotFoundException cne) {
+			comandoDaEseguire = factory.costruisciComando("NonValido");
+		} catch (NullPointerException npe) {
+			comandoDaEseguire = factory.costruisciComando("NonValido");
+		}
+		comandoDaEseguire.esegui(this.partita);
+		if (this.partita.vinta())
 			io.mostraMessaggio("Hai vinto!");
-
-		if(partita.persa()) 
-			io.mostraMessaggio("Hai perso!");
-
+		if (this.partita.persa())
+			io.mostraMessaggio("Hai esaurito i CFU...");
 		return this.partita.isFinita();
-	}   
+	}
 
 	public static void main(String[] argc) throws Exception 
 	{
-		IO io=new IOConsole();
-		Labirinto labirinto=new LabirintoBuilder()
-			.addStanzaIniziale("salotto")
-			.addAttrezzo("sturacessi", 2)
-			.addStanza("cucina")
-			.addAttrezzo("pentola",1)// dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
-			.addStanzaVincente("camera")
-			.addAdiacenza("salotto", "cucina", "nord")
-			.addAdiacenza("cucina", "camera", "est")
-			.addStanzaBloccata("bagno","est","sturacessi")
-			.addAdiacenza("bagno","salotto" ,"ovest")
-			.addStanza("sgabuzzino")
-			.addAdiacenza("bagno","sgabuzzino", "est")
-			.getLabirinto();
+		Scanner scanner = new Scanner(System.in);
+		IO io=new IOConsole(scanner);
+		Labirinto labirinto = Labirinto.newBuilder("labirinto5.txt").getLabirinto();
+//			.addStanzaIniziale("salotto")
+//			.addAttrezzo("sturacessi", 2)
+//			.addStanza("cucina")
+//			.addAttrezzo("pentola",1)// dove? fa riferimento all’ultima stanza aggiunta: la “cucina”
+//			.addStanzaVincente("camera")
+//			.addAdiacenza("salotto", "cucina", "nord")
+//			.addAdiacenza("cucina", "camera", "est")
+//			.addStanzaBloccata("bagno","est","sturacessi")
+//			.addAdiacenza("bagno","salotto" ,"ovest")
+//			.addStanza("sgabuzzino")
+//			.addAdiacenza("bagno","sgabuzzino", "est")
+//			.getLabirinto();
 		DiaDia gioco = new DiaDia(labirinto,io);
 		gioco.gioca();
+		scanner.close();
 	}
 }

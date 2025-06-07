@@ -15,6 +15,11 @@ public class LabirintoBuilder{
 		this.labirinto=new Labirinto();
 		this.stanze=new HashMap<>();
 	}
+	
+	public LabirintoBuilder(String labirinto) throws FileNotFoundException, FormatoFileNonValidoException {
+		this.labirinto = new Labirinto(labirinto);
+		this.stanze = new HashMap<>();
+	}
 
 	public LabirintoBuilder addStanzaIniziale(String nome) {
 		Stanza stanzatemp=new Stanza(nome);

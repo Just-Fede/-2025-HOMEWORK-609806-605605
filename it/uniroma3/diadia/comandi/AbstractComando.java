@@ -3,36 +3,37 @@ package it.uniroma3.diadia.comandi;
 import it.uniroma3.diadia.IO;
 import it.uniroma3.diadia.Partita;
 
-public class AbstractComando implements Comando{
+public abstract class AbstractComando implements Comando{
 
-	@Override
-	public boolean esegui(Partita partita) {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	private IO io;
+	private String parametro;
+	private final static String NOME = "AbstractComando";
 
-	@Override
-	public String getNome() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+	abstract public boolean esegui(Partita partita);
 
 	@Override
 	public String getParametro() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.parametro;
 	}
-
+	
 	@Override
 	public void setParametro(String parametro) {
-		// TODO Auto-generated method stub
-		
+		this.parametro  = parametro;
 	}
 
 	@Override
-	public void setIO(IO io) {
-		// TODO Auto-generated method stub
-		
+	public void setIo(IO io) {
+		this.io = io;
 	}
 
+	public IO getIo() {
+		return io;
+	}
+
+	//for testing purposes
+	@Override
+	public String getNome() {
+		return NOME;
+	}
 }

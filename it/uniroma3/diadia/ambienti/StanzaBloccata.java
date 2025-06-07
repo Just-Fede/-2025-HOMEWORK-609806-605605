@@ -1,40 +1,32 @@
 package it.uniroma3.diadia.ambienti;
 
-public class StanzaBloccata extends Stanza
-{
-	String oggettoNecessario;
-	String direzioneBloccata;
+public class StanzaBloccata extends Stanza {
 
+	private Direzione direzioneBloccata;
+	private String attrezzoSbloccante;
 
-	public StanzaBloccata(String nome,String key, String direzioneBloccata)
-	{
+	public StanzaBloccata(String nome, Direzione direzioneBloccata, String attrezzoSbloccante) {
 		super(nome);
-		this.direzioneBloccata=direzioneBloccata;
-		this.oggettoNecessario=key;
+		this.direzioneBloccata = direzioneBloccata;
+		this.attrezzoSbloccante = attrezzoSbloccante;
 	}
 
+
+
 	@Override
-	public Stanza getStanzaAdiacente(String dir) 
-	{	
-		if ((dir.equals(direzioneBloccata))) {
-			if (this.hasAttrezzo(oggettoNecessario)) 
-			{
-				return super.getStanzaAdiacente(dir);
-			}
-		}
-		else {
-			return super.getStanzaAdiacente(dir);
-		}
+	public Stanza getStanzaAdiacente(Direzione direzione) {
+		if(direzioneBloccata.equals(direzione) && !this.hasAttrezzo(attrezzoSbloccante)) {
 			return this;
+		}
+		return super.getStanzaAdiacente(direzione);
 	}
 
 	@Override
 	public String getDescrizione() {
-		String descrizioneBase=super.getDescrizione();
-		if (this.hasAttrezzo(oggettoNecessario))
-			return descrizioneBase+"\nLa stanza è bloccata, lato "+direzioneBloccata+", ma grazie a "+oggettoNecessario+" puoi passare";
-		else 
-			return descrizioneBase+"\nLa stanza è bloccata, lato "+direzioneBloccata+", per passare ti serve "+oggettoNecessario;
-	}
+		String bloccata = "Stanza bloccata nella direzione: "+ direzioneBloccata+"\nPrendi il " + attrezzoSbloccante + " e posalo nella stanza";
 
+		if(!this.hasAttrezzo(attrezzoSbloccante))
+			return bloccata;
+		return super.getDescrizione();
+	}
 }
